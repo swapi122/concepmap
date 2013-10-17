@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/style.css")
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/Scripts/js_style.js")
 </head>
 <body>
@@ -38,6 +38,7 @@
                          <span class="divider"></span>
                          <a href="#" class="nav4">Học Online </a>
                          <span class="divider"></span>*@
+
                           @Html.ActionLink("Home","HomePage","TrangChu")
                           @Html.ActionLink("Giới Thiệu","HomePage","TrangChu")
                           @Html.ActionLink("Liên Hệ","HomePage","TrangChu")
