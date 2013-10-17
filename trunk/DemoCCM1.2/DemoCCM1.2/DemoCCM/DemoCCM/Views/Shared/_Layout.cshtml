@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/style.css")
+    @Scripts.Render("~/Scripts/js_style.js")
+</head>
+<body>
+    <div class="main_container">
+      <header>
+        <div class="top_bar">
+            <div class="top_login">
+                <div class="text">User</div>
+                <input type="text" class="class_input" name="user" />
+                <div class="text">Password</div>
+                <input type="text" class="class_input" name="pwd" />
+                <input type="submit" class="btnsubmit" value="Login" />
+            </div>
+        </div> 
+        <div id="header">
+            <div id="logo">
+
+            </div>
+        </div>
+        <div class="main_container">
+            <div class="menu_tab">
+                <nav class="menu">
+                         <span class="divider"></span>          
+                         <a href="#" class="nav1">  </a>
+            
+@*                         <span class="divider"></span>
+                         <a href="#" class="nav2">Giới Thiệu</a>
+                         <span class="divider"></span>
+                         <a href="#" class="nav3">Liên Hệ</a>
+                         <span class="divider"></span>
+                         <a href="#" class="nav4">Diễn Đàn</a>
+                         <span class="divider"></span>
+                         <a href="#" class="nav4">Học Online </a>
+                         <span class="divider"></span>*@
+                          @Html.ActionLink("Home","HomePage","TrangChu")
+                          @Html.ActionLink("Giới Thiệu","HomePage","TrangChu")
+                          @Html.ActionLink("Liên Hệ","HomePage","TrangChu")
+                          @Html.ActionLink("Diễn Đàn","HomePage","TrangChu")
+                          @Html.ActionLink("Học Online","HomePage","TrangChu")
+                 </nav>
+            </div>
+        </div>  
+     </header>
+        @{Html.RenderAction("_TrinhDoPartial", "TrangChu");}
+        @RenderBody()
+   <footer>
+
+   </footer>
+</div>
+    
+</body>
+</html>
