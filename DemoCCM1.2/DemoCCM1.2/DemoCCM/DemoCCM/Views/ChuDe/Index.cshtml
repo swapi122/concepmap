@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Concept.cshtml";
+}
+<article class="left_content">
+  @{Html.RenderAction("_ConceptOfTopicPartial", "ChuDe");}
+    @{Html.RenderAction("_LinkOfTopicPartial", "ChuDe");}
+</article>
+@* Truyền ngầm giá trị từ Level/Topic_Level*@
+<div class="center_content">
+                <div class="space"></div>
+               
+                <div  class="center_title_bar">
+                   <div class="question">
+                        Câu hỏi trọng tâm
+                     
+                      @Html.DropDownList("QuestionID",(IEnumerable<SelectListItem>) ViewBag.cd)
+                       
+                        
+                </div>
+                   
+                </div>
+    <div class="center_main_draw"></div>
+    <div  class="button_bottom">
+        <button>Hoàn Thành</button>
+        <button>Sửa</button>
+        <button>Đáp án</button>
+    </div>
+ </div>
