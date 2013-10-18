@@ -69,13 +69,13 @@ input.class_input{
     height:50px;
     background-color:#fff;
 }
-nav.menu {
+ul.menu {
     list-style-type:none; float:right; display:block; width:100%; 
     margin:0px; padding:0px;background:url(images/menu_bg.gif) repeat-x;
     /*background-color:yellow;*/
 
 }
-nav.menu a {
+ul.menu li {
     display:inline;
     font-size:15px;
     font-weight:bold;
@@ -83,7 +83,7 @@ nav.menu a {
     margin-left: 20px;
     margin-right: 20px;
 }
-nav.menu span.divider {
+ul.menu li.divider {
     margin-left: 20px;
     margin-right: 20px;
     display:inline;
@@ -92,20 +92,14 @@ nav.menu span.divider {
     float:left;
     background:url(images/menu_divider.gif) no-repeat center;
 }
+ul.menu li.img_nav a:link,ul.menu li.img_nav a:visited{
+    display:block; float:left; padding:0px 8px 0px 22px; margin:0 14px 0 14px;height:50px;text-decoration:none; background:url(images/home.png) no-repeat left; color:#676d77;
 
-
-
-
-a.nav1:link, a.nav1:visited {
-    display:block; float:left; padding:0px 8px 0px 22px; margin:0 14px 0 14px;height:50px;text-decoration:none; background:url(images/home.png) no-repeat left; color:#676d77;}
-a.nav2:link, a.nav2:visited {
-    display:block; float:left; /* padding:0px 8px 0px 22px;*/margin:0 18px 0 18px;height:50px;text-decoration:none;color:#676d77;}
-a.nav3:link, a.nav3:visited {
-    display:block; float:left; /*padding:0px 8px 0px 22px;*/ margin:0 18px 0 18px;height:50px;text-decoration:none; color:#676d77;}
-a.nav4:link, a.nav4:visited {
-    display:block; float:left;/*padding:0px 8px 0px 22px;*/ margin:0 18px 0 18px;height:50px;text-decoration:none;color:#676d77;}
-
-a.nav1:hover, a.nav2:hover, a.nav3:hover, a.nav4:hover, a.nav5:hover, a.nav6:hover {color:#333333;}
+}
+ul.menu li.no_img_nav a:link,ul.menu li.no_img_nav a:visited{
+     display:block; float:left; /* padding:0px 8px 0px 22px;*/margin:0 18px 0 18px;height:50px;text-decoration:none;color:#676d77;
+}
+ul.menu li.img_nav a:hover,ul.menu li.no_img_nav a:hover{color:#000;}
 
 /*-------------left_content------------------*/
 .left_content{
@@ -153,7 +147,7 @@ ul.left_menu li a{
     width:166px;height:40px;display:block;background:url(images/checked.png) no-repeat left #eee6e6;background-position:5px 5px;border-bottom:1px #FFFFFF solid;
     text-decoration:none;color:#504b4b;padding:0 0 0 30px; line-height:25px;
 }
-    ul.left_menu li a:hover{
+ul.left_menu li a:hover{
     background:url(images/checked.png) no-repeat left #7bbcc7; color:#FFFFFF;background-position:5px 5px;
     box-shadow:5px 5px 5px #999;
 
@@ -181,13 +175,10 @@ ul.left_menu li a{
     padding: 0 0 0 30px;
     line-height:50px;
     font-size:18px;
-    color:#0026ff;
+    color:#676d77;
     font-weight:bold;
-    background-color:yellow;
-    color:#ff006e;
     border-top-left-radius:8px;
     border-top-right-radius:8px;
-    /*background-color:#f0f0f0;*/
     background:url(images/menu_bg.gif)  center;
 }
 
@@ -196,7 +187,7 @@ ul.left_menu li a{
     float:left;
     width:1000px;
     height:auto;
-    background-color:#DDDCDC;
+    background-color:#eee6e6;
     margin: 5px 0 0 12px;
     padding: 0 0 0 30px;
     border-bottom-left-radius:8px;
@@ -211,7 +202,7 @@ ul.left_menu li a{
   clear:both;
   float:left;
   width:1000px;
-  height:500px;
+  height:auto;
   overflow:hidden;
   margin:0 0 10px 0;
   padding: 0;
@@ -315,9 +306,7 @@ div.boxhide2 {
     width:196px;
     height:300px;
     margin-top:2px;
-    background-color:#eee6e6;
-   
-    
+    background-color:#eee6e6;  
     
 }
 div.center_main_draw {
@@ -326,7 +315,7 @@ div.center_main_draw {
     height:580px;
     /*overflow-x:scroll;
     overflow-y:scroll;*/
-    background:url(images/bgdraw.jpg);
+    background:url(images/bg_paper.gif);
     margin: 5px 0 0 12px;
     padding: 0 0 0 30px;
     /*border-bottom-left-radius:8px;
@@ -343,7 +332,6 @@ div.center_main_draw {
     font-size: 14px;
     color: #847676;
     font-weight: bold;
-    background-color: yellow;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     /*background-color:#f0f0f0;*/

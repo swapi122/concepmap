@@ -17,7 +17,6 @@ namespace DemoCCM.Controllers
         public ActionResult Index(String idTopic)
         {
             ViewBag.cd = new SelectList(db.Questions, "QuestionID", "QuestionText");
-
             return View();
             
         }
@@ -46,8 +45,7 @@ namespace DemoCCM.Controllers
         public PartialViewResult _ConceptOfTopicPartial(String idTopic)
         {
             List<ConceptsForTopic> conceptForTopics;
-            conceptForTopics = db.ConceptsForTopics.Where(p => p.TopicID.Equals(idTopic)).ToList();
-           
+            conceptForTopics = db.ConceptsForTopics.Where(p => p.TopicID.Equals(idTopic)).ToList();     
             return PartialView(conceptForTopics);
         }
 
