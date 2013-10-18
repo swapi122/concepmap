@@ -7,26 +7,14 @@
       <Schema Namespace="ConceptModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="ConceptModelStoreContainer">
           <EntitySet Name="ConceptAll" EntityType="ConceptModel.Store.ConceptAll" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ConceptForQuestion" EntityType="ConceptModel.Store.ConceptForQuestion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ConceptsForTopic" EntityType="ConceptModel.Store.ConceptsForTopic" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Level" EntityType="ConceptModel.Store.Level" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Link" EntityType="ConceptModel.Store.Link" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="LinkOfMap" EntityType="ConceptModel.Store.LinkOfMap" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MapOfUser" EntityType="ConceptModel.Store.MapOfUser" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Question" EntityType="ConceptModel.Store.Question" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="QuestionsForTopic" EntityType="ConceptModel.Store.QuestionsForTopic" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="ConceptModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Topic" EntityType="ConceptModel.Store.Topic" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TopicOfLevel" EntityType="ConceptModel.Store.TopicOfLevel" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="ConceptModel.Store.User" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_ConceptForQuestion_ConceptAll" Association="ConceptModel.Store.FK_ConceptForQuestion_ConceptAll">
-            <End Role="ConceptAll" EntitySet="ConceptAll" />
-            <End Role="ConceptForQuestion" EntitySet="ConceptForQuestion" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ConceptForQuestion_Question" Association="ConceptModel.Store.FK_ConceptForQuestion_Question">
-            <End Role="Question" EntitySet="Question" />
-            <End Role="ConceptForQuestion" EntitySet="ConceptForQuestion" />
-          </AssociationSet>
           <AssociationSet Name="FK_ConceptsForTopic_ConceptAll" Association="ConceptModel.Store.FK_ConceptsForTopic_ConceptAll">
             <End Role="ConceptAll" EntitySet="ConceptAll" />
             <End Role="ConceptsForTopic" EntitySet="ConceptsForTopic" />
@@ -55,14 +43,6 @@
             <End Role="User" EntitySet="User" />
             <End Role="MapOfUser" EntitySet="MapOfUser" />
           </AssociationSet>
-          <AssociationSet Name="FK_QuestionsForTopic_Question" Association="ConceptModel.Store.FK_QuestionsForTopic_Question">
-            <End Role="Question" EntitySet="Question" />
-            <End Role="QuestionsForTopic" EntitySet="QuestionsForTopic" />
-          </AssociationSet>
-          <AssociationSet Name="FK_QuestionsForTopic_Topic" Association="ConceptModel.Store.FK_QuestionsForTopic_Topic">
-            <End Role="Topic" EntitySet="Topic" />
-            <End Role="QuestionsForTopic" EntitySet="QuestionsForTopic" />
-          </AssociationSet>
           <AssociationSet Name="FK_TopicOfLevel_Level" Association="ConceptModel.Store.FK_TopicOfLevel_Level">
             <End Role="Level" EntitySet="Level" />
             <End Role="TopicOfLevel" EntitySet="TopicOfLevel" />
@@ -79,15 +59,6 @@
           <Property Name="ConceptID" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="ConceptName" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="ConceptForQuestion">
-          <Key>
-            <PropertyRef Name="ConceptID" />
-            <PropertyRef Name="QuestionID" />
-          </Key>
-          <Property Name="ConceptID" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="QuestionID" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="St" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-        </EntityType>
         <EntityType Name="ConceptsForTopic">
           <Key>
             <PropertyRef Name="ConceptID" />
@@ -95,7 +66,8 @@
           </Key>
           <Property Name="ConceptID" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="TopicID" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="Stt" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="nvarchar" MaxLength="50" />
+          <Property Name="Levels" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Level">
           <Key>
@@ -132,32 +104,6 @@
           <Property Name="MapName" Type="nvarchar" MaxLength="50" />
           <Property Name="UserID" Type="varchar" Nullable="false" MaxLength="10" />
         </EntityType>
-        <EntityType Name="Question">
-          <Key>
-            <PropertyRef Name="QuestionID" />
-          </Key>
-          <Property Name="QuestionID" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="QuestionText" Type="nvarchar" Nullable="false" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="QuestionsForTopic">
-          <Key>
-            <PropertyRef Name="QuestionID" />
-            <PropertyRef Name="TopicID" />
-          </Key>
-          <Property Name="QuestionID" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="TopicID" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="Stt" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Topic">
           <Key>
             <PropertyRef Name="TopicID" />
@@ -183,30 +129,6 @@
           <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="Pass" Type="varchar" Nullable="false" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_ConceptForQuestion_ConceptAll">
-          <End Role="ConceptAll" Type="ConceptModel.Store.ConceptAll" Multiplicity="1" />
-          <End Role="ConceptForQuestion" Type="ConceptModel.Store.ConceptForQuestion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ConceptAll">
-              <PropertyRef Name="ConceptID" />
-            </Principal>
-            <Dependent Role="ConceptForQuestion">
-              <PropertyRef Name="ConceptID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ConceptForQuestion_Question">
-          <End Role="Question" Type="ConceptModel.Store.Question" Multiplicity="1" />
-          <End Role="ConceptForQuestion" Type="ConceptModel.Store.ConceptForQuestion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Question">
-              <PropertyRef Name="QuestionID" />
-            </Principal>
-            <Dependent Role="ConceptForQuestion">
-              <PropertyRef Name="QuestionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ConceptsForTopic_ConceptAll">
           <End Role="ConceptAll" Type="ConceptModel.Store.ConceptAll" Multiplicity="1" />
           <End Role="ConceptsForTopic" Type="ConceptModel.Store.ConceptsForTopic" Multiplicity="*" />
@@ -291,30 +213,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_QuestionsForTopic_Question">
-          <End Role="Question" Type="ConceptModel.Store.Question" Multiplicity="1" />
-          <End Role="QuestionsForTopic" Type="ConceptModel.Store.QuestionsForTopic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Question">
-              <PropertyRef Name="QuestionID" />
-            </Principal>
-            <Dependent Role="QuestionsForTopic">
-              <PropertyRef Name="QuestionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_QuestionsForTopic_Topic">
-          <End Role="Topic" Type="ConceptModel.Store.Topic" Multiplicity="1" />
-          <End Role="QuestionsForTopic" Type="ConceptModel.Store.QuestionsForTopic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Topic">
-              <PropertyRef Name="TopicID" />
-            </Principal>
-            <Dependent Role="QuestionsForTopic">
-              <PropertyRef Name="TopicID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TopicOfLevel_Level">
           <End Role="Level" Type="ConceptModel.Store.Level" Multiplicity="1" />
           <End Role="TopicOfLevel" Type="ConceptModel.Store.TopicOfLevel" Multiplicity="*" />
@@ -344,24 +242,16 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ConceptModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ConceptMapDBContextt" p1:LazyLoadingEnabled="false">
+        <EntityContainer Name="ConceptMapDBContext" p1:LazyLoadingEnabled="true">
           <EntitySet Name="ConceptAlls" EntityType="ConceptModel.ConceptAll" />
-          <EntitySet Name="ConceptForQuestions" EntityType="ConceptModel.ConceptForQuestion" />
           <EntitySet Name="ConceptsForTopics" EntityType="ConceptModel.ConceptsForTopic" />
           <EntitySet Name="Levels" EntityType="ConceptModel.Level" />
           <EntitySet Name="Links" EntityType="ConceptModel.Link" />
           <EntitySet Name="LinkOfMaps" EntityType="ConceptModel.LinkOfMap" />
           <EntitySet Name="MapOfUsers" EntityType="ConceptModel.MapOfUser" />
-          <EntitySet Name="Questions" EntityType="ConceptModel.Question" />
-          <EntitySet Name="QuestionsForTopics" EntityType="ConceptModel.QuestionsForTopic" />
-          <EntitySet Name="sysdiagrams" EntityType="ConceptModel.sysdiagram" />
           <EntitySet Name="Topics" EntityType="ConceptModel.Topic" />
           <EntitySet Name="TopicOfLevels" EntityType="ConceptModel.TopicOfLevel" />
           <EntitySet Name="Users" EntityType="ConceptModel.User" />
-          <AssociationSet Name="FK_ConceptForQuestion_ConceptAll" Association="ConceptModel.FK_ConceptForQuestion_ConceptAll">
-            <End Role="ConceptAll" EntitySet="ConceptAlls" />
-            <End Role="ConceptForQuestion" EntitySet="ConceptForQuestions" />
-          </AssociationSet>
           <AssociationSet Name="FK_ConceptsForTopic_ConceptAll" Association="ConceptModel.FK_ConceptsForTopic_ConceptAll">
             <End Role="ConceptAll" EntitySet="ConceptAlls" />
             <End Role="ConceptsForTopic" EntitySet="ConceptsForTopics" />
@@ -373,10 +263,6 @@
           <AssociationSet Name="FK_Link_ConceptAll1" Association="ConceptModel.FK_Link_ConceptAll1">
             <End Role="ConceptAll" EntitySet="ConceptAlls" />
             <End Role="Link" EntitySet="Links" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ConceptForQuestion_Question" Association="ConceptModel.FK_ConceptForQuestion_Question">
-            <End Role="Question" EntitySet="Questions" />
-            <End Role="ConceptForQuestion" EntitySet="ConceptForQuestions" />
           </AssociationSet>
           <AssociationSet Name="FK_ConceptsForTopic_Topic" Association="ConceptModel.FK_ConceptsForTopic_Topic">
             <End Role="Topic" EntitySet="Topics" />
@@ -398,14 +284,6 @@
             <End Role="User" EntitySet="Users" />
             <End Role="MapOfUser" EntitySet="MapOfUsers" />
           </AssociationSet>
-          <AssociationSet Name="FK_QuestionsForTopic_Question" Association="ConceptModel.FK_QuestionsForTopic_Question">
-            <End Role="Question" EntitySet="Questions" />
-            <End Role="QuestionsForTopic" EntitySet="QuestionsForTopics" />
-          </AssociationSet>
-          <AssociationSet Name="FK_QuestionsForTopic_Topic" Association="ConceptModel.FK_QuestionsForTopic_Topic">
-            <End Role="Topic" EntitySet="Topics" />
-            <End Role="QuestionsForTopic" EntitySet="QuestionsForTopics" />
-          </AssociationSet>
           <AssociationSet Name="FK_TopicOfLevel_Topic" Association="ConceptModel.FK_TopicOfLevel_Topic">
             <End Role="Topic" EntitySet="Topics" />
             <End Role="TopicOfLevel" EntitySet="TopicOfLevels" />
@@ -417,21 +295,9 @@
           </Key>
           <Property Name="ConceptID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="ConceptName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="ConceptForQuestions" Relationship="ConceptModel.FK_ConceptForQuestion_ConceptAll" FromRole="ConceptAll" ToRole="ConceptForQuestion" />
           <NavigationProperty Name="ConceptsForTopics" Relationship="ConceptModel.FK_ConceptsForTopic_ConceptAll" FromRole="ConceptAll" ToRole="ConceptsForTopic" />
           <NavigationProperty Name="Links" Relationship="ConceptModel.FK_Link_ConceptAll" FromRole="ConceptAll" ToRole="Link" />
           <NavigationProperty Name="Links1" Relationship="ConceptModel.FK_Link_ConceptAll1" FromRole="ConceptAll" ToRole="Link" />
-        </EntityType>
-        <EntityType Name="ConceptForQuestion">
-          <Key>
-            <PropertyRef Name="ConceptID" />
-            <PropertyRef Name="QuestionID" />
-          </Key>
-          <Property Name="ConceptID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="QuestionID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="St" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="ConceptAll" Relationship="ConceptModel.FK_ConceptForQuestion_ConceptAll" FromRole="ConceptForQuestion" ToRole="ConceptAll" />
-          <NavigationProperty Name="Question" Relationship="ConceptModel.FK_ConceptForQuestion_Question" FromRole="ConceptForQuestion" ToRole="Question" />
         </EntityType>
         <EntityType Name="ConceptsForTopic">
           <Key>
@@ -440,7 +306,8 @@
           </Key>
           <Property Name="ConceptID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="TopicID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="Stt" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Levels" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="ConceptAll" Relationship="ConceptModel.FK_ConceptsForTopic_ConceptAll" FromRole="ConceptsForTopic" ToRole="ConceptAll" />
           <NavigationProperty Name="Topic" Relationship="ConceptModel.FK_ConceptsForTopic_Topic" FromRole="ConceptsForTopic" ToRole="Topic" />
         </EntityType>
@@ -487,36 +354,6 @@
           <NavigationProperty Name="LinkOfMaps" Relationship="ConceptModel.FK_LinkOfMap_MapOfUser" FromRole="MapOfUser" ToRole="LinkOfMap" />
           <NavigationProperty Name="User" Relationship="ConceptModel.FK_MapOfUser_User" FromRole="MapOfUser" ToRole="User" />
         </EntityType>
-        <EntityType Name="Question">
-          <Key>
-            <PropertyRef Name="QuestionID" />
-          </Key>
-          <Property Name="QuestionID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="QuestionText" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="ConceptForQuestions" Relationship="ConceptModel.FK_ConceptForQuestion_Question" FromRole="Question" ToRole="ConceptForQuestion" />
-          <NavigationProperty Name="QuestionsForTopics" Relationship="ConceptModel.FK_QuestionsForTopic_Question" FromRole="Question" ToRole="QuestionsForTopic" />
-        </EntityType>
-        <EntityType Name="QuestionsForTopic">
-          <Key>
-            <PropertyRef Name="QuestionID" />
-            <PropertyRef Name="TopicID" />
-          </Key>
-          <Property Name="QuestionID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="TopicID" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="Stt" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Question" Relationship="ConceptModel.FK_QuestionsForTopic_Question" FromRole="QuestionsForTopic" ToRole="Question" />
-          <NavigationProperty Name="Topic" Relationship="ConceptModel.FK_QuestionsForTopic_Topic" FromRole="QuestionsForTopic" ToRole="Topic" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Topic">
           <Key>
             <PropertyRef Name="TopicID" />
@@ -525,7 +362,6 @@
           <Property Name="ToppicName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="TopicImage" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="ConceptsForTopics" Relationship="ConceptModel.FK_ConceptsForTopic_Topic" FromRole="Topic" ToRole="ConceptsForTopic" />
-          <NavigationProperty Name="QuestionsForTopics" Relationship="ConceptModel.FK_QuestionsForTopic_Topic" FromRole="Topic" ToRole="QuestionsForTopic" />
           <NavigationProperty Name="TopicOfLevels" Relationship="ConceptModel.FK_TopicOfLevel_Topic" FromRole="Topic" ToRole="TopicOfLevel" />
         </EntityType>
         <EntityType Name="TopicOfLevel">
@@ -548,18 +384,6 @@
           <Property Name="Pass" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="MapOfUsers" Relationship="ConceptModel.FK_MapOfUser_User" FromRole="User" ToRole="MapOfUser" />
         </EntityType>
-        <Association Name="FK_ConceptForQuestion_ConceptAll">
-          <End Role="ConceptAll" Type="ConceptModel.ConceptAll" Multiplicity="1" />
-          <End Role="ConceptForQuestion" Type="ConceptModel.ConceptForQuestion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ConceptAll">
-              <PropertyRef Name="ConceptID" />
-            </Principal>
-            <Dependent Role="ConceptForQuestion">
-              <PropertyRef Name="ConceptID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ConceptsForTopic_ConceptAll">
           <End Role="ConceptAll" Type="ConceptModel.ConceptAll" Multiplicity="1" />
           <End Role="ConceptsForTopic" Type="ConceptModel.ConceptsForTopic" Multiplicity="*" />
@@ -593,18 +417,6 @@
             </Principal>
             <Dependent Role="Link">
               <PropertyRef Name="ConceptID2" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ConceptForQuestion_Question">
-          <End Role="Question" Type="ConceptModel.Question" Multiplicity="1" />
-          <End Role="ConceptForQuestion" Type="ConceptModel.ConceptForQuestion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Question">
-              <PropertyRef Name="QuestionID" />
-            </Principal>
-            <Dependent Role="ConceptForQuestion">
-              <PropertyRef Name="QuestionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -668,30 +480,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_QuestionsForTopic_Question">
-          <End Role="Question" Type="ConceptModel.Question" Multiplicity="1" />
-          <End Role="QuestionsForTopic" Type="ConceptModel.QuestionsForTopic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Question">
-              <PropertyRef Name="QuestionID" />
-            </Principal>
-            <Dependent Role="QuestionsForTopic">
-              <PropertyRef Name="QuestionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_QuestionsForTopic_Topic">
-          <End Role="Topic" Type="ConceptModel.Topic" Multiplicity="1" />
-          <End Role="QuestionsForTopic" Type="ConceptModel.QuestionsForTopic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Topic">
-              <PropertyRef Name="TopicID" />
-            </Principal>
-            <Dependent Role="QuestionsForTopic">
-              <PropertyRef Name="TopicID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TopicOfLevel_Topic">
           <End Role="Topic" Type="ConceptModel.Topic" Multiplicity="1" />
           <End Role="TopicOfLevel" Type="ConceptModel.TopicOfLevel" Multiplicity="*" />
@@ -709,7 +497,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ConceptModelStoreContainer" CdmEntityContainer="ConceptMapDBContextt">
+        <EntityContainerMapping StorageEntityContainer="ConceptModelStoreContainer" CdmEntityContainer="ConceptMapDBContext">
           <EntitySetMapping Name="ConceptAlls">
             <EntityTypeMapping TypeName="ConceptModel.ConceptAll">
               <MappingFragment StoreEntitySet="ConceptAll">
@@ -718,21 +506,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ConceptForQuestions">
-            <EntityTypeMapping TypeName="ConceptModel.ConceptForQuestion">
-              <MappingFragment StoreEntitySet="ConceptForQuestion">
-                <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
-                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
-                <ScalarProperty Name="St" ColumnName="St" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ConceptsForTopics">
             <EntityTypeMapping TypeName="ConceptModel.ConceptsForTopic">
               <MappingFragment StoreEntitySet="ConceptsForTopic">
                 <ScalarProperty Name="ConceptID" ColumnName="ConceptID" />
                 <ScalarProperty Name="TopicID" ColumnName="TopicID" />
-                <ScalarProperty Name="Stt" ColumnName="Stt" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="Levels" ColumnName="Levels" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -771,34 +551,6 @@
                 <ScalarProperty Name="MapID" ColumnName="MapID" />
                 <ScalarProperty Name="MapName" ColumnName="MapName" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Questions">
-            <EntityTypeMapping TypeName="ConceptModel.Question">
-              <MappingFragment StoreEntitySet="Question">
-                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
-                <ScalarProperty Name="QuestionText" ColumnName="QuestionText" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QuestionsForTopics">
-            <EntityTypeMapping TypeName="ConceptModel.QuestionsForTopic">
-              <MappingFragment StoreEntitySet="QuestionsForTopic">
-                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
-                <ScalarProperty Name="TopicID" ColumnName="TopicID" />
-                <ScalarProperty Name="Stt" ColumnName="Stt" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ConceptModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

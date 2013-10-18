@@ -16,7 +16,8 @@ namespace DemoCCM.Models
     {
         public string ConceptID { get; set; }
         public string TopicID { get; set; }
-        public int Stt { get; set; }
+        public string Question { get; set; }
+        public string Levels { get; set; }
     
         public virtual ConceptAll ConceptAll { get; set; }
         public virtual Topic Topic { get; set; }

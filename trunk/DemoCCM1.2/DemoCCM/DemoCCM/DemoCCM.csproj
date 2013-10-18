@@ -133,9 +133,6 @@
     <Compile Include="Models\ConceptAll.cs">
       <DependentUpon>ConceptMapDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConceptForQuestion.cs">
-      <DependentUpon>ConceptMapDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ConceptMapDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -164,15 +161,6 @@
       <DependentUpon>ConceptMapDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MapOfUser.cs">
-      <DependentUpon>ConceptMapDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Question.cs">
-      <DependentUpon>ConceptMapDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QuestionsForTopic.cs">
-      <DependentUpon>ConceptMapDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>ConceptMapDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Topic.cs">
