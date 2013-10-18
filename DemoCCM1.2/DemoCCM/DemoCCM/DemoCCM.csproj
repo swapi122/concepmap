@@ -175,11 +175,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\images\bg_paper.gif" />
     <Content Include="Content\images\1.png" />
     <Content Include="Content\images\2.png" />
     <Content Include="Content\images\bar_bg.gif" />
     <Content Include="Content\images\bgdraw.jpg" />
+    <Content Include="Content\images\bg_paper.gif" />
     <Content Include="Content\images\checked.png" />
     <Content Include="Content\images\dowbtn.gif" />
     <Content Include="Content\images\dowbutton.gif" />
