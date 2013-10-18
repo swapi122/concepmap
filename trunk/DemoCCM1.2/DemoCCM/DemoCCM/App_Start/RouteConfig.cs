@@ -16,7 +16,7 @@ namespace DemoCCM
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "TrangChu", action = "HomePage", id = UrlParameter.Optional }
+                defaults: new { controller = "ChuDe", action = "aa", id = UrlParameter.Optional }
             );
         }
     }

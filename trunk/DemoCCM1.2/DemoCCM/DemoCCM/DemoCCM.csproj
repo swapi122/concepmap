@@ -311,6 +311,7 @@
     <Content Include="Views\TrangChu\HomePage.cshtml" />
     <Content Include="Views\ChuDe\_ConceptOfTopicPartial.cshtml" />
     <Content Include="Views\ChuDe\_LinkOfTopicPartial.cshtml" />
+    <Content Include="Views\ChuDe\aa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
