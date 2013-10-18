@@ -18,7 +18,7 @@ namespace DemoCCM.Controllers
         {
             ViewBag.cd = new SelectList(db.ConceptsForTopics, "Question", "Question");
             return View();
-            
+
         }
 
         //ghghgh
@@ -42,10 +42,45 @@ namespace DemoCCM.Controllers
             return PartialView();
         }
 
+        public ActionResult aa()
+        {
+            List<ConceptsForTopic> conceptForTopics;
+            conceptForTopics = db.ConceptsForTopics.ToList();
+
+            List<String> level = new List<string>();
+            foreach (var k in conceptForTopics)
+           {
+               int len = k.Levels.Length;
+            
+                   string[] catchuoi = k.Levels.Split(new char[] { ',' });
+                   foreach (string s1 in catchuoi)
+                   {
+                       if (s1.Trim() != "")
+                       {
+                           level.Add(s1);  
+                       }
+                   }
+            }
+            
+            for(int i=0;i<level.Count();i++)
+            {
+                ViewBag.l =ViewBag.l+ level[i].ToString();
+            }
+
+            
+            return View();
+        }
+
         public PartialViewResult _ConceptOfTopicPartial(String idTopic)
         {
             List<ConceptsForTopic> conceptForTopics;
+
+          /*  var l = from db1 in db.ConceptsForTopics
+                    select db1.Levels.Trim().Split(',');*/
+
+                       
             conceptForTopics = db.ConceptsForTopics.Where(p => p.TopicID.Equals(idTopic)).ToList();     
+            
             return PartialView(conceptForTopics);
         }
 
