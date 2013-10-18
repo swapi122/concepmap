@@ -14,7 +14,7 @@
                 <div class="text">User</div>
                 <input type="text" class="class_input" name="user" />
                 <div class="text">Password</div>
-                <input type="text" class="class_input" name="pwd" />
+                <input type="password" class="class_input" name="pwd" />
                 <input type="submit" class="btnsubmit" value="Login" />
             </div>
         </div> 
@@ -24,28 +24,21 @@
             </div>
         </div>
         <div class="main_container">
-            <div class="menu_tab">
-                <nav class="menu">
-                         <span class="divider"></span>          
-                         <a href="#" class="nav1">  </a>
-            
-@*                         <span class="divider"></span>
-                         <a href="#" class="nav2">Giới Thiệu</a>
-                         <span class="divider"></span>
-                         <a href="#" class="nav3">Liên Hệ</a>
-                         <span class="divider"></span>
-                         <a href="#" class="nav4">Diễn Đàn</a>
-                         <span class="divider"></span>
-                         <a href="#" class="nav4">Học Online </a>
-                         <span class="divider"></span>*@
-
-                          @Html.ActionLink("Home","HomePage","TrangChu")
-                          @Html.ActionLink("Giới Thiệu","HomePage","TrangChu")
-                          @Html.ActionLink("Liên Hệ","HomePage","TrangChu")
-                          @Html.ActionLink("Diễn Đàn","HomePage","TrangChu")
-                          @Html.ActionLink("Học Online","HomePage","TrangChu")
-                 </nav>
-            </div>
+            <nav class="menu_tab">
+                <ul class="menu">
+                         <li class="divider"></li>          
+                         <li class="img_nav">@Html.ActionLink("Home","HomePage","TrangChu")</li>
+                         <li class="divider"></li>
+                         <li class="no_img_nav"> @Html.ActionLink("Giới Thiệu","HomePage","TrangChu")</li>
+                         <li class="divider"></li>
+                         <li class="no_img_nav">@Html.ActionLink("Liên Hệ","HomePage","TrangChu")</li>
+                         <li class="divider"></li>
+                         <li class="no_img_nav">@Html.ActionLink("Diễn Đàn","HomePage","TrangChu")</li>
+                         <li class="divider"></li>
+                         <li class="no_img_nav">@Html.ActionLink("Học Online","HomePage","TrangChu")</li>
+                         <li class="divider"></li>                         
+                 </ul>
+            </nav>
         </div>  
      </header>
         @{Html.RenderAction("_TrinhDoPartial", "TrangChu");}
