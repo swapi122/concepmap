@@ -11,11 +11,10 @@ namespace DemoCCM.Controllers
     {
         //
         // GET: /TrangChu/
-        ConceptMapDBContextt db = new ConceptMapDBContextt();
+        ConceptMapDBContext db = new ConceptMapDBContext();
         
         public ActionResult Index()
         {
-
             return View();
         }
         public ActionResult About()

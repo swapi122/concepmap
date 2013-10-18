@@ -16,7 +16,6 @@ namespace DemoCCM.Models
     {
         public ConceptAll()
         {
-            this.ConceptForQuestions = new HashSet<ConceptForQuestion>();
             this.ConceptsForTopics = new HashSet<ConceptsForTopic>();
             this.Links = new HashSet<Link>();
             this.Links1 = new HashSet<Link>();
@@ -25,7 +24,6 @@ namespace DemoCCM.Models
         public string ConceptID { get; set; }
         public string ConceptName { get; set; }
     
-        public virtual ICollection<ConceptForQuestion> ConceptForQuestions { get; set; }
         public virtual ICollection<ConceptsForTopic> ConceptsForTopics { get; set; }
         public virtual ICollection<Link> Links { get; set; }
         public virtual ICollection<Link> Links1 { get; set; }

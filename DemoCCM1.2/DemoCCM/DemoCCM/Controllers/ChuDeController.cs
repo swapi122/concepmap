@@ -12,11 +12,11 @@ namespace DemoCCM.Controllers
         //
         // GET: /ChuDe/
 
-        ConceptMapDBContextt db = new ConceptMapDBContextt();
+        ConceptMapDBContext db = new ConceptMapDBContext();
 
         public ActionResult Index(String idTopic)
         {
-            ViewBag.cd = new SelectList(db.Questions, "QuestionID", "QuestionText");
+            ViewBag.cd = new SelectList(db.ConceptsForTopics, "Question", "Question");
             return View();
             
         }

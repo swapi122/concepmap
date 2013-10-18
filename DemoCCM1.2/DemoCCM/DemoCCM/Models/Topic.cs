@@ -17,7 +17,6 @@ namespace DemoCCM.Models
         public Topic()
         {
             this.ConceptsForTopics = new HashSet<ConceptsForTopic>();
-            this.QuestionsForTopics = new HashSet<QuestionsForTopic>();
             this.TopicOfLevels = new HashSet<TopicOfLevel>();
         }
     
@@ -26,7 +25,6 @@ namespace DemoCCM.Models
         public string TopicImage { get; set; }
     
         public virtual ICollection<ConceptsForTopic> ConceptsForTopics { get; set; }
-        public virtual ICollection<QuestionsForTopic> QuestionsForTopics { get; set; }
         public virtual ICollection<TopicOfLevel> TopicOfLevels { get; set; }
     }
 }

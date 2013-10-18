@@ -11,7 +11,7 @@ namespace DemoCCM.Controllers
 
         //
         // GET: /ChuDe/
-        ConceptMapDBContextt db = new ConceptMapDBContextt();
+        ConceptMapDBContext db = new ConceptMapDBContext();
 
         public ActionResult Index()
         {

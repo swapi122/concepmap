@@ -13,10 +13,10 @@ namespace DemoCCM.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ConceptMapDBContextt : DbContext
+    public partial class ConceptMapDBContext : DbContext
     {
-        public ConceptMapDBContextt()
-            : base("name=ConceptMapDBContextt")
+        public ConceptMapDBContext()
+            : base("name=ConceptMapDBContext")
         {
         }
     
@@ -26,15 +26,11 @@ namespace DemoCCM.Models
         }
     
         public DbSet<ConceptAll> ConceptAlls { get; set; }
-        public DbSet<ConceptForQuestion> ConceptForQuestions { get; set; }
         public DbSet<ConceptsForTopic> ConceptsForTopics { get; set; }
         public DbSet<Level> Levels { get; set; }
         public DbSet<Link> Links { get; set; }
         public DbSet<LinkOfMap> LinkOfMaps { get; set; }
         public DbSet<MapOfUser> MapOfUsers { get; set; }
-        public DbSet<Question> Questions { get; set; }
-        public DbSet<QuestionsForTopic> QuestionsForTopics { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<TopicOfLevel> TopicOfLevels { get; set; }
         public DbSet<User> Users { get; set; }
