@@ -13,24 +13,22 @@ namespace DemoCCM.Controllers
         // GET: /ChuDe/
         ConceptMapDBContext db = new ConceptMapDBContext();
 
-        public ActionResult Index()
+        public ActionResult Topic_Level(String levelID1,String topicId)
         {
-            
-            return View();
-        }
+             //Lấy Level đưa wa bên  Topic/Index
+            ViewBag.topicId1 = topicId;
+            List<TopicOfLevel> topicOfLevel = db.TopicOfLevels.Where(p => p.Level.LevelID.Equals(levelID1)).ToList();
 
-        public ActionResult Topic_Level(String idLevel)
-        {
-            ViewBag.idLevel = idLevel;
-            List<TopicOfLevel> topicOfLevel = db.TopicOfLevels.Where(p => p.Level.LevelID.Equals(idLevel)).ToList() ;
-          
-            TopicOfLevel tp = topicOfLevel.Find(p=>p.LevelID.Equals(idLevel));
+            TopicOfLevel tp = topicOfLevel.Find(p => p.LevelID.Equals(levelID1));
             if(tp!=null)
             ViewBag.name = tp.Level.LevelName;
 
             ViewBag.Title = "Level";
             return View(topicOfLevel);
         }
+
+     
+       
 
     }
 }

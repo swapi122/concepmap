@@ -5,15 +5,12 @@
                 <ul class="left_menu">
               @foreach(var item in Model)
               {
-                    <li>@Html.ActionLink(item.LevelName, "Topic_Level", "Level", new { idLevel = item.LevelID },null)</li>
+                    <li>@Html.ActionLink(item.LevelName, "Topic_Level", "Level", new {levelID1 = item.LevelID },null)</li>
+                     
               } 
-               
-
                 </ul> 
                
                 <div class="title_box">My Info</div>
                 <div class="border_box"></div>
     
  </article>
-
-           
