@@ -17,8 +17,8 @@
                         if (e.Topic.TopicImage == null) { name = "NoImage.jpg"; }
                         <li>
                             <a href="@Url.Action("Index","ChuDe",new{idTopic=e.TopicID})">
-                                
-                     
+                             
+                         @{Html.RenderAction("_ConceptOfTopicPartial", "ChuDe", new { idLevel = e.LevelID });}
                                  <img alt="@e.Topic.ToppicName"  src="~/Photos/concepts/@name" />
                                     <div class="title_thumbs"></div>
                                     <span class="titlebla">@e.Topic.ToppicName </span>

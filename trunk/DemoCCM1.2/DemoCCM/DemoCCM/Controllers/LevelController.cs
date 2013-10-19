@@ -21,6 +21,7 @@ namespace DemoCCM.Controllers
 
         public ActionResult Topic_Level(String idLevel)
         {
+            ViewBag.idLevel = idLevel;
             List<TopicOfLevel> topicOfLevel = db.TopicOfLevels.Where(p => p.Level.LevelID.Equals(idLevel)).ToList() ;
           
             TopicOfLevel tp = topicOfLevel.Find(p=>p.LevelID.Equals(idLevel));
