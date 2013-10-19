@@ -30,11 +30,7 @@ namespace DemoCCM.Controllers
             return PartialView(level);
         }
 
-        public ActionResult HomePage(String id ) {
-            
-            ViewBag.Message = "Home Page";
-            return View();
-        }
+       
 
     }
 }
