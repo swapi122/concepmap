@@ -1,14 +1,16 @@
-﻿@model List<DemoCCM.Models.ConceptsForTopic>
+﻿@*@model List<DemoCCM.Models.ConceptsForTopic>*@
 @Scripts.Render("~/Content/js_style.js")
    <div class ="space"></div>
        <div class="title_box"> Khái Niệm <img id="updow1" src="~/Content/images/2.png" /></div>
           <div class="boxhide">
               <ul class="scope">
-                    @foreach (var item in Model)
+                   @* @foreach (var item in Model)
                     {
                            <li>@item.ConceptAll.ConceptName </li>
-                    } 
+                    } *@
+                 
                </ul>
+               <p>@ViewBag.c</p>
           </div>
                
             
