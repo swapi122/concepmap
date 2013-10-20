@@ -23,7 +23,7 @@ namespace DemoCCM.Controllers
 
         }
 
-        //ghghgh
+        //
         public PartialViewResult _LinkOfTopicPartial(String idTopic)
         {
             List<ConceptsForTopic> conceptForTopics;
@@ -48,11 +48,7 @@ namespace DemoCCM.Controllers
         {
             List<ConceptsForTopic> conceptForTopics;
             conceptForTopics = db.ConceptsForTopics.Where(p=>p.TopicID.Equals(TopicID)).ToList();
-
-
             List<ConceptsForTopic> conceptForTopics2 = new List<ConceptsForTopic>();
-           
-
             ConceptsForTopic concept = new ConceptsForTopic();
 
             foreach (var k in conceptForTopics)
