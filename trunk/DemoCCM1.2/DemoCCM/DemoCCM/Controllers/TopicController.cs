@@ -23,9 +23,13 @@ namespace DemoCCM.Controllers
 
         }
 
-        //
+
+        //Làm tương tự như Khái Niệm 
         public PartialViewResult _LinkOfTopicPartial(List<ConceptsForTopic> concept)
         {
+            //Làm tương tự như Khái Niệm 
+
+
             List<Link> links = new List<Link>();
 
             var ids = from a in concept
@@ -34,7 +38,7 @@ namespace DemoCCM.Controllers
             foreach (var id in ids)
             {
                 var link = from p in db.Links
-                           where p.ConceptID1.Equals(id) || p.ConceptID2.Equals(id)
+                           where p.ConceptID1.Equals(id) 
                            select p;
                 foreach (Link i in link)
                 {
@@ -46,7 +50,7 @@ namespace DemoCCM.Controllers
         }
 
 
-        public PartialViewResult _Concept_Topic_TopicPartial(String LevelID,String TopicID)
+        public PartialViewResult _Concept_Topic_LevelPartial(String LevelID, String TopicID)
         {
             List<ConceptsForTopic> conceptForTopics;
             conceptForTopics = db.ConceptsForTopics.Where(p=>p.TopicID.Equals(TopicID)).ToList();
