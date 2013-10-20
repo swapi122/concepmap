@@ -26,7 +26,7 @@ namespace DemoCCM.Controllers
         //
         public PartialViewResult _LinkOfTopicPartial(List<ConceptsForTopic> concept)
         {
-            List<Link> links = db.Links.ToList();
+            List<Link> links = new List<Link>();
 
             var ids = from a in concept
                       select a.ConceptID;
