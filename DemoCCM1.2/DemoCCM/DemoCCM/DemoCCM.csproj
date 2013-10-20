@@ -311,7 +311,7 @@
     <Content Include="Views\Topic\_LinkOfTopicPartial.cshtml" />
     <Content Include="Views\TrangChu\Index.cshtml" />
     <Content Include="Views\TrangChu\_TrinhDoPartial.cshtml" />
-    <Content Include="Views\Topic\_Concept_Topic_TopicPartial.cshtml" />
+    <Content Include="Views\Topic\_Concept_Topic_LevelPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
