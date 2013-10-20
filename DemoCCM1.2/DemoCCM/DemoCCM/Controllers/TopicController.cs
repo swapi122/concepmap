@@ -24,23 +24,25 @@ namespace DemoCCM.Controllers
         }
 
         //
-        public PartialViewResult _LinkOfTopicPartial(String idTopic)
+        public PartialViewResult _LinkOfTopicPartial(List<ConceptsForTopic> concept)
         {
-            List<ConceptsForTopic> conceptForTopics;
-            conceptForTopics = db.ConceptsForTopics.Where(p => p.TopicID.Equals(idTopic)).ToList();
+            List<Link> links = db.Links.ToList();
 
-            var link = from db1 in db.ConceptsForTopics
-                       join db2 in db.ConceptAlls on db1.ConceptID equals db2.ConceptID
-                       join db3 in db.Links on db2.ConceptID equals db3.ConceptID1
-                       where db1.TopicID.Equals(idTopic)
-                       select new { linkID = db3.LinkID, linkName = db3.Text };
+            var ids = from a in concept
+                      select a.ConceptID;
 
-            foreach (var k in link)
+            foreach (var id in ids)
             {
-                ViewBag.a =ViewBag.a + "  |  " + k.linkName;
+                var link = from p in db.Links
+                           where p.ConceptID1.Equals(id) || p.ConceptID2.Equals(id)
+                           select p;
+                foreach (Link i in link)
+                {
+                    links.Add(i);
+                }
             }
-          //  ViewBag.a = link.ToList();
-            return PartialView();
+
+            return PartialView(links);
         }
 
 
