@@ -361,3 +361,7 @@ ul.scope li {
     height:65px;
     background:url(images/footer_bg.gif) repeat-x top;
 }
+img.concept {
+    width:800px;
+    height: 600px;
+}

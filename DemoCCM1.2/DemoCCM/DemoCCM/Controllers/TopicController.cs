@@ -49,7 +49,6 @@ namespace DemoCCM.Controllers
             return PartialView(links);
         }
 
-
         public PartialViewResult _Concept_Topic_LevelPartial(String LevelID, String TopicID)
         {
             List<ConceptsForTopic> conceptForTopics;
