@@ -2,9 +2,9 @@
 $(document).ready(function ()
 {
     $("#updow1").click(function(){
-        $("div.boxhide").toggle(800);
+        $("div.boxhide").toggle();
     });
     $("#updow2").click(function () {
-        $("div.boxhide2").toggle(800);
+        $("div.boxhide2").toggle();
     });
 });
