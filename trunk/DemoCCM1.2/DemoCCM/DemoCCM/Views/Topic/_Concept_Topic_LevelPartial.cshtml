@@ -8,7 +8,11 @@
               <ul class="scope">
                   @foreach (var item in Model)
                   {
-                      <li>@item.ConceptAll.ConceptName</li>
+                      <li>@item.ConceptAll.ConceptName @item.ConceptAll.ConceptID</li>
+                  }
+                  @{
+                      var l = new SelectList(Model,"Question","Question");
+                      @Html.DropDownList("Question",(IEnumerable<SelectListItem>)l)
                   }
                </ul>
                
